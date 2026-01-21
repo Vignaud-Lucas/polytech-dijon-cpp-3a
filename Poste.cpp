@@ -10,3 +10,9 @@ std::string Poste::getNom() const {
 std::string Poste::getOs() const {
 	return os_;
 }
+
+std::ostream& operator<<(std::ostream& os, Poste& p) {
+	os << "Nom: " << p.nom_ << std::endl;
+	os << "OS: " << p.os_ << std::endl;
+	return os;
+	}

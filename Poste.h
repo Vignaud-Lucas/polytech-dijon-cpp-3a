@@ -11,5 +11,6 @@ class Poste {
 	Poste(std::string nom, std::string os);
 	std::string getNom() const;
 	std::string getOs() const;
+	friend std::ostream& operator<<(std::ostream& os, Poste& p);
 };
 #endif

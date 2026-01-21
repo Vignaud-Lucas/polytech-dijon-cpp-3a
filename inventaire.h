@@ -20,12 +20,19 @@ class Inventaire {
 		std::vector<Ecran> listeEcranInventaire_;
    public:
    Inventaire();
+   void addPoste(Poste& p);
+   void addPetitMateriel(PetitMateriel& p);
+   void addMaterielReseau(MaterielReseau& p);
+   void addMaterielSpecifique(MaterielSpecifique& p);
+   void addEcran(Ecran& e);
+   void addConnectique(Connectique& c);
    std::vector<Poste> getListePosteInventaire();
    std::vector<PetitMateriel> getListePetitMaterielInventaire();
    std::vector<MaterielReseau> getListeMaterielReseauInventaire();
    std::vector<MaterielSpecifique> getListeMaterielSpecifiqueInventaire();
    std::vector<Connectique> getListeConnectiqueInventaire();
    std::vector<Ecran> getListeEcranInventaire();
+   friend std::ostream& operator<<(std::ostream& os, const Inventaire& i);
 
 };
 #endif

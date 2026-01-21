@@ -31,3 +31,32 @@ std::vector<Connectique> Salle::getListeConnectiqueSalle() {
 std::vector<Ecran> Salle::getListeEcranSalle() {
 	return listeEcranSalle_;
 }
+
+std::ostream& operator<<(std::ostream& os, const Salle& s) {
+    os << "Numéro : " << s.getNumero() << " Type: " << s.getType() << std::endl;
+	os << "Postes: " << std::endl;
+	for (Poste p: s.listePosteSalle_) {
+		os << p << std::endl;
+	}
+	os << "Petit Matériel: " << std::endl;
+	for (PetitMateriel p : s.listePetitMaterielSalle_) {
+		os << p << std::endl;
+	}
+	os << "Materiel Reseau: " << std::endl;
+	for (MaterielReseau p : s.listeMaterielReseauSalle_) {
+		os << p << std::endl;
+	}
+	os << "Materiel Specifique: " << std::endl;
+	for (MaterielSpecifique p : s.listeMaterielSpecifiqueSalle_) {
+		os << p << std::endl;
+	}
+	os << "Connectique: " << std::endl;
+	for (Connectique p : s.listeConnectiqueSalle_) {
+		os << p << std::endl;
+	}
+	os << "Ecran: " << std::endl;
+	for (Ecran p : s.listeEcranSalle_) {
+		os << p << std::endl;
+	}
+	return os;
+}

@@ -13,5 +13,6 @@ class Connectique {
 	std::string getNom() const;
 	std::string getTypePort() const;
 	int getLongueur() const;
+	friend std::ostream& operator<<(std::ostream& os, Connectique& c);
 };
 #endif

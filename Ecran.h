@@ -13,5 +13,6 @@ Ecran(std::string nom, std::string marque, std::string taille);
 std::string getMarque() const;
 std::string getTaille() const;
 std::string getNom() const;
+friend std::ostream& operator<<(std::ostream& os, Ecran& e);
 };
 #endif

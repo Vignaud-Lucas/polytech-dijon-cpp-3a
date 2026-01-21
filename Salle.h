@@ -20,6 +20,7 @@ std::vector<MaterielReseau> listeMaterielReseauSalle_;
 std::vector<MaterielSpecifique> listeMaterielSpecifiqueSalle_;
 std::vector<Connectique> listeConnectiqueSalle_;
 std::vector<Ecran> listeEcranSalle_;
+friend std::ostream& operator<<(std::ostream& os,const Salle& s);
 public:
 Salle(int numero, std::string type);
 int getNumero() const;

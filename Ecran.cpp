@@ -14,3 +14,10 @@ std::string Ecran::getTaille() const {
 std::string Ecran::getNom() const {
 	return nom_;
 }
+
+std::ostream& operator<<(std::ostream& os, Ecran& e) {
+	os << "Nom: " << e.nom_ << std::endl;
+	os << "Marque: " << e.marque_ << std::endl;
+	os << "Taille: " << e.taille_ << std::endl;
+	return os;
+}

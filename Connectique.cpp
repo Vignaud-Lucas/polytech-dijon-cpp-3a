@@ -14,3 +14,10 @@ std::string Connectique::getTypePort() const {
 int Connectique::getLongueur() const {
 	return longueur_;
 }
+
+std::ostream& operator<<(std::ostream& os, Connectique& c) {
+	os << "Nom: " << c.nom_ << std::endl;
+	os << "Type de port: " << c.typePort_ << std::endl;
+	os << "Longueur: " << c.longueur_ << std::endl;
+	return os;
+}

@@ -11,5 +11,6 @@ public:
 	MaterielSpecifique(std::string nom, std::string marque);
 	std::string getNom() const;
 	std::string getMarque() const;
+	friend std::ostream& operator<<(std::ostream& os, MaterielSpecifique& m);
 };
 #endif
