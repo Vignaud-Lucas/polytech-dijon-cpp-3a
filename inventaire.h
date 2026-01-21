@@ -20,6 +20,25 @@ class Inventaire {
 		std::vector<Ecran> listeEcranInventaire_;
    public:
    Inventaire();
+
+   void popPoste(int v);
+   void popPM(int v);
+   void popMR(int v);
+   void popMS(int v);
+   void popC(int v);
+   void popE(int v);
+   Poste getPoste(int v) ;
+   PetitMateriel getPetitMateriel(int v) ;
+   MaterielReseau getMaterielReseau(int v) ;
+   MaterielSpecifique getMaterielSpecifique(int v) ;
+   Connectique getConnectique(int v) ;
+   Ecran getEcran(int v) ;
+   int getPosteSize() const;
+   int getPetitMaterielSize() const;
+   int getMaterielReseauSize() const;
+   int getMaterielSpecifiqueSize() const;
+   int getConnectiqueSize() const;
+   int getEcranSize() const;
    void addPoste(Poste& p);
    void addPetitMateriel(PetitMateriel& p);
    void addMaterielReseau(MaterielReseau& p);

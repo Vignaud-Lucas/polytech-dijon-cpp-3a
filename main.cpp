@@ -1,3 +1,7 @@
+//Problème de parenthésages "} attendu ligne 332 et { : jeton correspondant introuvable ligne 30" 
+//Le reste fonctionnait bien  cette dernière modification permettait de réaliser le 3: placement de matériel dans l'inventaire, 
+//l'ancien commit de main permet de tout faire hormis le 3.
+
 #include <string>
 #include <vector>
 #include <iostream>
@@ -24,9 +28,8 @@ void afficherMenuPrincipal() {
 int main() {
     Inventaire inv = Inventaire();
     std::vector<Salle> listeSalles;
-    int choixPrincipal, choixSousMenu, longueur;
+    int choixPrincipal, choixSousMenu, choixSousSousMenu,choixSousSousSousMenu, longueur;
     std::string nom,os,type,marque,taille;
-
     do {
         afficherMenuPrincipal();
         std::cin >> choixPrincipal;
@@ -107,6 +110,7 @@ int main() {
 
         case 3: // PLACEMENT DU MATERIEL DE L'INVENTAIRE DANS UNE SALLE
             do {
+            int val;
                 std::cout << "1. Poste de Travail\n";
                 std::cout << "2. Petit Materiel\n";
                 std::cout << "3. Ecran\n";
@@ -117,24 +121,154 @@ int main() {
                 std::cout << "Choix\n";
                 std::cin >> choixSousMenu;
 
-                if (choixSousMenu == 1) {
-                  
+                if (choixSousMenu == 1){
+                    if (inv.getPosteSize() == 0) {
+                        std::cout << "Impossible, aucun stock" << std::endl;
+                    } 
+                    else { 
+                    std::cout << "Donner un nombre entre 0 et " << inv.getPosteSize() -1 << std::endl;
+                    std::cin >> choixSousSousMenu;
+
+                    if (choixSousSousMenu < inv.getPosteSize() && choixSousSousMenu >= 0) {
+
+                    std::cout << "Choisir une salle entre 0 et " << listeSalles.size() -1 << std::endl;
+                    std::cin >> choixSousSousSousMenu;
+
+                    if (choixSousSousSousMenu >= 0 && choixSousSousSousMenu < listeSalles.size()) {
+
+                        listeSalles[choixSousSousSousMenu].addPoste(inv.getPoste(choixSousSousMenu));
+                        inv.popPoste(choixSousSousMenu);
+
+                    } while(choixSousSousSousMenu >= listeSalles.size() || choixSousSousSousMenu < 0);
+
+                    } while (choixSousSousMenu >= inv.getPosteSize() || choixSousSousMenu < 0);
+                     
+                    }
                 }
                 else if (choixSousMenu == 2) {
+                    if (inv.getPetitMaterielSize() == 0) {
+                        std::cout << "Impossible, aucun stock" << std::endl;
+                    }
+                    else {
+                        std::cout << "Donner un nombre entre 0 et " << inv.getPetitMaterielSize() - 1 << std::endl;
+                        std::cin >> choixSousSousMenu;
+
+                        if (choixSousSousMenu < inv.getPetitMaterielSize() && choixSousSousMenu >= 0) {
+
+                            std::cout << "Choisir une salle entre 0 et " << listeSalles.size() - 1 << std::endl;
+                            std::cin >> choixSousSousSousMenu;
+
+                            if (choixSousSousSousMenu >= 0 && choixSousSousSousMenu < listeSalles.size()) {
+
+                                listeSalles[choixSousSousSousMenu].addPetitMateriel(inv.getPetitMateriel(choixSousSousMenu));
+                                inv.popPM(choixSousSousMenu);
+
+                            } while (choixSousSousSousMenu >= listeSalles.size() || choixSousSousSousMenu < 0);
+
+                        } while (choixSousSousMenu >= inv.getPetitMaterielSize() || choixSousSousMenu < 0);
+
+                    }
                   
                 }
-                if (choixSousMenu == 3) {
-                    
-                }
-                if (choixSousMenu == 4) {
+                else if (choixSousMenu == 3) {
+                    if (inv.getEcranSize() == 0) {
+                        std::cout << "Impossible, aucun stock" << std::endl;
+                    }
+                    else {
+                        std::cout << "Donner un nombre entre 0 et " << inv.getEcranSize() - 1 << std::endl;
+                        std::cin >> choixSousSousMenu;
+
+                        if (choixSousSousMenu < inv.getEcranSize() && choixSousSousMenu >= 0) {
+
+                            std::cout << "Choisir une salle entre 0 et " << listeSalles.size() - 1 << std::endl;
+                            std::cin >> choixSousSousSousMenu;
+
+                            if (choixSousSousSousMenu >= 0 && choixSousSousSousMenu < listeSalles.size()) {
+
+                                listeSalles[choixSousSousSousMenu].addEcran(inv.getEcran(choixSousSousMenu));
+                                inv.popE(choixSousSousMenu);
+
+                            } while (choixSousSousSousMenu >= listeSalles.size() || choixSousSousSousMenu < 0);
+
+                        } while (choixSousSousMenu >= inv.getEcranSize() || choixSousSousMenu < 0);
+
+                    }
                    
                 }
+                else if (choixSousMenu == 4) {
+                    if (inv.getConnectiqueSize() == 0) {
+                        std::cout << "Impossible, aucun stock" << std::endl;
+                    }
+                    else {
+                        std::cout << "Donner un nombre entre 0 et " << inv.getConnectiqueSize() - 1 << std::endl;
+                        std::cin >> choixSousSousMenu;
+
+                        if (choixSousSousMenu < inv.getConnectiqueSize() && choixSousSousMenu >= 0) {
+
+                            std::cout << "Choisir une salle entre 0 et " << listeSalles.size() - 1 << std::endl;
+                            std::cin >> choixSousSousSousMenu;
+
+                            if (choixSousSousSousMenu >= 0 && choixSousSousSousMenu < listeSalles.size()) {
+
+                                listeSalles[choixSousSousSousMenu].addConnectique(inv.getConnectique(choixSousSousMenu));
+                                inv.popC(choixSousSousMenu);
+
+                            } while (choixSousSousSousMenu >= listeSalles.size() || choixSousSousSousMenu < 0);
+
+                        } while (choixSousSousMenu >= inv.getConnectiqueSize() || choixSousSousMenu < 0);
+
+                    }
+
+                }
+
                 else if (choixSousMenu == 5) {
-                   
+                    if (inv.getMaterielReseauSize() == 0) {
+                        std::cout << "Impossible, aucun stock" << std::endl;
+                    }
+                    else {
+                        std::cout << "Donner un nombre entre 0 et " << inv.getMaterielReseauSize() - 1 << std::endl;
+                        std::cin >> choixSousSousMenu;
+
+                        if (choixSousSousMenu < inv.getMaterielReseauSize() && choixSousSousMenu >= 0) {
+
+                            std::cout << "Choisir une salle entre 0 et " << listeSalles.size() - 1 << std::endl;
+                            std::cin >> choixSousSousSousMenu;
+
+                            if (choixSousSousSousMenu >= 0 && choixSousSousSousMenu < listeSalles.size()) {
+
+                                listeSalles[choixSousSousSousMenu].addMaterielReseau(inv.getMaterielReseau(choixSousSousMenu));
+                                inv.popMR(choixSousSousMenu);
+
+                            } while (choixSousSousSousMenu >= listeSalles.size() || choixSousSousSousMenu < 0);
+
+                        } while (choixSousSousMenu >= inv.getMaterielReseauSize() || choixSousSousMenu < 0);
+
+                    }
+
                 }
                 else if (choixSousMenu == 6) {
-                    
-                }
+                    if (inv.getMaterielSpecifiqueSize() == 0) {
+                        std::cout << "Impossible, aucun stock" << std::endl;
+                    }
+                    else {
+                        std::cout << "Donner un nombre entre 0 et " << inv.getMaterielSpecifiqueSize() - 1 << std::endl;
+                        std::cin >> choixSousSousMenu;
+
+                        if (choixSousSousMenu < inv.getMaterielSpecifiqueSize() && choixSousSousMenu >= 0) {
+
+                            std::cout << "Choisir une salle entre 0 et " << listeSalles.size() - 1 << std::endl;
+                            std::cin >> choixSousSousSousMenu;
+
+                            if (choixSousSousSousMenu >= 0 && choixSousSousSousMenu < listeSalles.size()) {
+
+                                listeSalles[choixSousSousSousMenu].addMaterielSpecifique(inv.getMaterielSpecifique(choixSousSousMenu));
+                                inv.popMS(choixSousSousMenu);
+
+                            } while (choixSousSousSousMenu >= listeSalles.size() || choixSousSousSousMenu < 0);
+
+                        } while (choixSousSousMenu >= inv.getMaterielSpecifiqueSize() || choixSousSousMenu < 0);
+
+                    }
             } while (choixSousMenu != 0);
             break;
 
@@ -194,7 +328,6 @@ int main() {
         default:
             std::cout << "Choix invalide.\n";
         }
-    } while (choixPrincipal != 0);
+     while (choixPrincipal != 0);
 
-	return 0;
-}
+	return 0;}

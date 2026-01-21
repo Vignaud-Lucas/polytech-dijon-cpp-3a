@@ -31,5 +31,11 @@ std::vector<MaterielReseau> getListeMaterielReseauSalle();
 std::vector<MaterielSpecifique> getListeMaterielSpecifiqueSalle();
 std::vector<Connectique> getListeConnectiqueSalle();
 std::vector<Ecran> getListeEcranSalle();
+void addPoste(Poste p);
+void addPetitMateriel(PetitMateriel p);
+void addMaterielReseau(MaterielReseau p);
+void addMaterielSpecifique(MaterielSpecifique p);
+void addEcran(Ecran e);
+void addConnectique(Connectique c);
 };
 #endif

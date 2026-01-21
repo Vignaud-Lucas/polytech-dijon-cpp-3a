@@ -60,3 +60,23 @@ std::ostream& operator<<(std::ostream& os, const Salle& s) {
 	}
 	return os;
 }
+
+
+void Salle::addPoste(Poste p) {
+	listePosteSalle_.push_back(p);
+}
+void Salle::addPetitMateriel(PetitMateriel p) {
+	listePetitMaterielSalle_.push_back(p);
+}
+void Salle::addMaterielReseau(MaterielReseau p) {
+	listeMaterielReseauSalle_.push_back(p);
+}
+void Salle::addMaterielSpecifique(MaterielSpecifique p) {
+	listeMaterielSpecifiqueSalle_.push_back(p);
+}
+void Salle::addEcran(Ecran e) {
+	listeEcranSalle_.push_back(e);
+}
+void Salle::addConnectique(Connectique c){
+	listeConnectiqueSalle_.push_back(c);
+	}

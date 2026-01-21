@@ -9,6 +9,64 @@ Inventaire::Inventaire():
 	listeEcranInventaire_({}){}
 
 
+
+void Inventaire::popPoste(int v) {
+listePosteInventaire_.erase(listePosteInventaire_.begin() + v);
+}
+void Inventaire::popPM(int v) {
+	listePetitMaterielInventaire_.erase(listePetitMaterielInventaire_.begin() +v );
+}
+void Inventaire::popMR(int v) {
+	listeMaterielReseauInventaire_.erase(listeMaterielReseauInventaire_.begin() +v);
+}
+void Inventaire::popMS(int v) {
+	listeMaterielSpecifiqueInventaire_.erase(listeMaterielSpecifiqueInventaire_.begin() +v);
+}
+void Inventaire::popC(int v) {
+	listeConnectiqueInventaire_.erase(listeConnectiqueInventaire_.begin()+v);
+}
+void Inventaire::popE(int v) {
+	listeEcranInventaire_.erase(listeEcranInventaire_.begin()+v);
+}
+
+Poste Inventaire::getPoste(int v){
+	return listePosteInventaire_[v];
+}
+PetitMateriel Inventaire::getPetitMateriel(int v) {
+return listePetitMaterielInventaire_[v];
+}
+MaterielReseau Inventaire::getMaterielReseau(int v)  {
+	return listeMaterielReseauInventaire_[v];
+}
+MaterielSpecifique Inventaire::getMaterielSpecifique(int v) {
+	return listeMaterielSpecifiqueInventaire_[v];
+}
+Connectique Inventaire::getConnectique(int v) {
+	return listeConnectiqueInventaire_[v];
+}
+Ecran Inventaire::getEcran(int v) {
+	return listeEcranInventaire_[v];
+}
+
+int Inventaire::getPosteSize() const {
+	return listePosteInventaire_.size();
+}
+int Inventaire::getPetitMaterielSize() const {
+	return listePetitMaterielInventaire_.size();
+}
+int Inventaire::getMaterielReseauSize() const {
+	return listeMaterielReseauInventaire_.size();
+}
+int Inventaire::getMaterielSpecifiqueSize() const {
+	return listeMaterielSpecifiqueInventaire_.size();
+}
+int Inventaire::getConnectiqueSize() const {
+	return listeConnectiqueInventaire_.size();
+}
+int Inventaire::getEcranSize() const {
+	return listeEcranInventaire_.size();
+}
+
 void Inventaire::addPoste(Poste& p) {
 	listePosteInventaire_.push_back(p);
 }
